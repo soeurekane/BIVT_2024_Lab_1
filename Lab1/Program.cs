@@ -154,15 +154,12 @@ public class Program
         int answer = 0;
 
         // code here;
-        int interm_sum = 1;
+        int f = 1;
         for(int i = 1;i <= 6; ++i)
         {
-            for(int j = 1;j <= i; ++j)
-            {
-                interm_sum *= j;
-            }
-            answer += interm_sum;
-            interm_sum = 1;
+            f = f * i;
+            answer += f;
+            
         }
         // end
 
@@ -171,22 +168,18 @@ public class Program
     public double Task_1_9()
     {
         double answer = 0;
-    // code here;
-        double coef = -1;
-        double fivv = 5;
-        double fact = 1;
-        for(double i = 1; i <= 6; ++i)
+        // code here;
+        double pr = -1, n = 5, f = 1;
+        for (double i = 1; i <= 6; i++)
         {
-            for(double j = 1; j <= i; ++j)
-            {
-                fact *= j;
-            }
-            answer += (coef*fivv)/fact;
-            coef *= -1;
-            fivv *= 5;
-            fact = 1;
+            f *= i;
+            answer += (pr * n) / f;
+            pr *= -1;
+            n *= 5;
         }
         answer = Math.Round(answer, 2);
+
+
         // end
 
         return answer;
@@ -579,20 +572,16 @@ public class Program
         double S = 0, y = 0;
 
         // code here
-        S = -1;
         double a = 1;
 
-     for (int n = 0; Math.Abs(a) >= 0.0001; n++)
-     {
-         double f = 1;
-         for (int i = 1; i <= 2 * n; i++)
-         {
-             f *= i;
-         }
-         S += a;
-         a = Math.Pow(x, 2 * n) / f;
-     }
-     y = Math.Cosh(x);
+        for (int i = 0; Math.Abs(a) >= 0.0001; ++i)
+        {
+            S += a;
+
+            a *= (x * x) / ((2 * i + 1) * (2 * i + 2));
+        }
+
+        y = (Math.Exp(x) + Math.Exp(-x)) / 2;
         // end
         return (S, y);
     }
